@@ -77,7 +77,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'iintense-basin-33592.herokuapp.com' }
+  # 2017/10/09 add DIVE-11
+  config.action_mailer.default_url_options = { host: 'intense-basin-33592.herokuapp.com/blogs' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
