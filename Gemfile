@@ -53,6 +53,11 @@ gem 'devise'
 
 gem 'faker'
 
+#DIVE 11
 group :development do
   gem 'letter_opener_web'
 end
+
+# DIVE12
+gem 'rails_admin'
+gem 'cancan'
