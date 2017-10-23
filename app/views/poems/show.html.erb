@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+    <h1>ポエム詳細</h1>
+
+    <%= form_for(@poem) do |f| %>
+      <div class="row">
+        <h4><strong><%= @poem.title %></strong></h4>
+        <p><%= @poem.content %></P>
+        <%= link_to "戻る", poems_path, class: 'btn btn-default' %>
+      </div>
+    <% end %>
+  </div>
+</div>

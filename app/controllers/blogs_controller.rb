@@ -29,8 +29,11 @@ class BlogsController < ApplicationController
   end
  
   def update
-    @blog.update(blogs_params);
-    redirect_to blogs_path
+    if @blog.update(blogs_params) then
+      redirect_to blogs_path, notice: "ブログを更新しました！"
+    else
+      redirect_to blogs_path, notice: "ブログを更新しませんでした"
+    end
   end
 
   def destroy
