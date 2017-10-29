@@ -68,3 +68,7 @@ gem 'cancan'
 
 #DIVE14 API-2
 gem 'activeresource'
+
+#DIVE14 API-3
+gem 'omniauth'
+gem 'her'
