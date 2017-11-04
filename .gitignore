@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# DIVE-14 add
+.env

@@ -57,9 +57,14 @@ gem 'devise'
 
 gem 'faker'
 
-#DIVE 11
 group :development do
+
+  #DIVE 11
   gem 'letter_opener_web'
+ 
+  #DIVE14 SNS
+  gem 'dotenv-rails'
+
 end
 
 # DIVE12
@@ -72,3 +77,10 @@ gem 'activeresource'
 #DIVE14 API-3
 gem 'omniauth'
 gem 'her'
+
+#DIVE14 SNS
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'carrierwave'
+gem 'mini_magick'
