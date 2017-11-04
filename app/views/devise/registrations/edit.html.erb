@@ -24,7 +24,7 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :パスワード %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label :変更後のパスワード %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
       <% if @minimum_password_length %>
         <br />
@@ -45,6 +45,7 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :プロフィール写真 %><br />
     <%= profile_img(@user) if profile_img(@user) %>
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
