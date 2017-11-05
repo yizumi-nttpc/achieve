@@ -4,13 +4,19 @@
   <h1>ブログ一覧</h1>
 
   <%= link_to "ブログを作成する", new_blog_path, class: 'btn btn-default' %>
+
   <% @blogs.each do |blog| %>
+
     <div class="row">
+
     <h4><strong><%= blog.title %></strong></h4>
+
       <p><%= profile_img(User.find(blog.user_id)) %> <%= User.find(blog.user_id).name %> さんが投稿しました。</p>
       <p><%= blog.content %></p>
-      <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
-      <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+
+        <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
+        <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+
     </div>
   <% end %>
   </div>

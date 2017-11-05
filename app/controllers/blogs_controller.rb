@@ -29,16 +29,24 @@ class BlogsController < ApplicationController
   end
  
   def update
-    if @blog.update(blogs_params) then
-      redirect_to blogs_path, notice: "ブログを更新しました！"
+    if @blog.user_id == current_user.id then
+      if @blog.update(blogs_params) then
+        redirect_to blogs_path, notice: "ブログを更新しました！"
+      else
+        redirect_to blogs_path, notice: "ブログを更新しませんでした"
+      end
     else
-      redirect_to blogs_path, notice: "ブログを更新しませんでした"
+      redirect_to blogs_path, notice: "プログを更新できません"
     end
   end
 
   def destroy
-    @blog.destroy
-    redirect_to blogs_path, notice: "ブログを削除しました！"
+    if @blog.user_id == current_user.id then
+      @blog.destroy
+      redirect_to blogs_path, notice: "ブログを削除しました！"
+    else
+      redirect_to blogs_path, notice: "ブログを削除できません"
+    end
   end
 
   def confirm
