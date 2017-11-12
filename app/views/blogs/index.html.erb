@@ -14,8 +14,7 @@
       <p><%= profile_img(User.find(blog.user_id)) %> <%= User.find(blog.user_id).name %> さんが投稿しました。</p>
       <p><%= blog.content %></p>
 
-      <% if blog.user_id == current_user.id? %>
-<% binding.pry %>
+      <% if blog.user == current_user %>
         <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success' %>
         <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
       <% end %>
