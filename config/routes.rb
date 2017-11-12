@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-#  get 'comments/create'
+  get 'relationships/create'
 
+  get 'relationships/destroy'
+
+#  get 'users/index'
+#  get 'comments/create'
 #  get 'top/index'
 #  get 'blogs' => 'blogs#index'
+
+  resources :users, only: [:index, :edit]
+  resources :relationships, only: [:create, :destroy]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {

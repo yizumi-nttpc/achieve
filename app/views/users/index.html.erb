@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>ユーザー</h2>
+  <% @users.each do |user| %>
+      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+        <%= profile_img(user) %>
+        <%= user.email %>
+        <%= link_to "詳細情報", edit_user_path(user.id), class: 'btn btn-default btn-sm btn-success' %>
+        <%= render 'follow_form', user: user %>
+      </div>
+  <% end %>
+</div>
