@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+#  get 'comments/create'
+
 #  get 'top/index'
 #  get 'blogs' => 'blogs#index'
 
@@ -8,12 +10,16 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      post :confirm
-    end
-  end
+#  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
+#    collection do
+#      post :confirm
+#    end
+#  end
 
+  resources :blogs do
+    resources :comments
+    post :confirm, on: :collection
+  end
 
 #  get 'contacts' => 'contacts#index'
   resources :contacts, only: [:new, :create] do
