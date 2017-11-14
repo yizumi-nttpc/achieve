@@ -84,3 +84,6 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'mini_magick'
+
+#DIVE19-2 pusher
+gem 'pusher'

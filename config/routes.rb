@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
+
+#  get 'messages/index'
+
+#  get 'messages/create'
+
+#  get 'conversations/index'
+
+#  get 'conversations/create'
+
   get 'relationships/create'
 
   get 'relationships/destroy'
@@ -10,6 +20,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :edit]
   resources :relationships, only: [:create, :destroy]
+
+# DIVE-19 message
+  resources :conversations do
+    resources :messages
+  end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {

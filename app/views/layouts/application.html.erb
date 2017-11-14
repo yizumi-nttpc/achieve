@@ -6,7 +6,27 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+  <% if user_signed_in? %>
+  <script>
+    var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+      encrypted: true,
+      cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+    channel.bind('comment_created', function(data) {
+      alert(data.message);
+    });
+
+    channel.bind('notification_created', function(data) {
+      $('#unread_count').html(data.unread_counts);
+    });
+  </script>
+  <% end %>
+
 </head>
 <body>
 
@@ -20,7 +40,11 @@
 <% if user_signed_in? %>
       <li><%= link_to 'マイページ', edit_user_registration_path %></li>
       <li><%= link_to 'ユーザー一覧', users_path %></li>
+      <li><%= link_to 'メッセージ', conversations_path %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <%= link_to notifications_index_path, class: "navbar-brand" do %>
+          <li><i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span></i></li>
+        <% end %>
 <% else %>
       <li><%= link_to 'ログイン', new_user_session_path  %></li>
       <li><%= link_to 'サインアップ', new_user_registration_path %></li>

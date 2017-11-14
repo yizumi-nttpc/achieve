@@ -4,8 +4,16 @@
       <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
         <%= profile_img(user) %>
         <%= user.email %>
-        <%= link_to "詳細情報", edit_user_path(user.id), class: 'btn btn-default btn-sm btn-success' %>
-        <%= render 'follow_form', user: user %>
+        <%= link_to "詳細情報", edit_user_path(user.id), class: 'btn btn-default btn-sm btn-info' %>
+        <% if user.id != current_user.id %>
+          <li>
+            <div class="item">
+              <%= link_to user.name, edit_user_path(user.id) %>
+              <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+            </div>
+            <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
+          </li>
+        <% end %>
       </div>
   <% end %>
 </div>
