@@ -94,7 +94,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 #DIVE19-2 pusher
-#gem 'pusher'
+gem 'pusher'
 
 #DIVE20-2 AWS
 #gem 'fog'
