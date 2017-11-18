@@ -11,6 +11,16 @@
 
   <% if user_signed_in? %>
   <script>
+    var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+      encrypted: true,
+      cluster: 'ap1'      
+    });
+
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('comment_created', function(data) {
+      alert(data.message);
+    });
+
   </script>
   <% end %>
 
