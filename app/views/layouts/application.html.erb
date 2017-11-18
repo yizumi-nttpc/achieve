@@ -21,6 +21,10 @@
       alert(data.message);
     });
 
+    channel.bind('notification_created', function(data) {
+      $('#unread_count').html(data.unread_counts);
+    });
+
   </script>
   <% end %>
 
@@ -38,6 +42,10 @@
       <li><%= link_to 'マイページ', edit_user_registration_path %></li>
       <li><%= link_to 'ユーザー一覧', users_path %></li>
       <li><%= link_to 'メッセージ', conversations_path %></li>
+<%= link_to notifications_index_path, class: "navbar-brand" do %>
+  <i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span></i>
+<% end %>
+
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
 <% else %>
       <li><%= link_to 'ログイン', new_user_session_path  %></li>
