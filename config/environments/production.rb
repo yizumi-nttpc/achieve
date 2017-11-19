@@ -78,7 +78,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # 2017/10/09 add DIVE-11
-  config.action_mailer.default_url_options = { host: 'secret-mountain-28994.herokuapp.com' }
+  # config.action_mailer.default_url_options = { host: 'secret-mountain-28994.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: '13.230.79.25' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
