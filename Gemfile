@@ -97,6 +97,6 @@ gem 'mini_magick'
 gem 'pusher'
 
 #DIVE20-2 AWS
-#gem 'fog'
-#gem 'dotenv-rails'
-#gem 'unicorn'
+gem 'fog'
+gem 'dotenv-rails'
+gem 'unicorn'
