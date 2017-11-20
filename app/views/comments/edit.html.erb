@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+    <h2>編集する</h2>
+
+    <%= form_for([@blog, @comment], url: blog_comment_path) do |f| %>
+
+      <% if @comment.errors.any? %>
+
+        <div id="error_explanation">
+          <h2><%= @comment.errors.count %>件のエラーがあります。</h2>
+          <ul>
+          <% @comment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+
+      <% end %>
+
+      <%= f.hidden_field :blog_id %>
+
+      <div class="field">
+        <%= f.text_field :content, placeholder: "内容", class: "form-control"  %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit '更新する', class: 'btn btn-primary btn-block' %>
+      </div>
+
+    <% end %>
+
+    <%= link_to '戻る', blog_path(@blog) %>
+
+  </div>
+</div>
